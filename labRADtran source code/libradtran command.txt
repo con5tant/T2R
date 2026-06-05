@@ -1,0 +1,3 @@
+cd ~/libradtran_test
+uvspec < drone_ir_final.inp > drone_ir_final.out
+python3 calculate_extinction_cm.py

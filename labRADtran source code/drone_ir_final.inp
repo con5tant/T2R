@@ -1,0 +1,16 @@
+# 观测方向：无人机(6km) → 地面(0km)，计算向下传输的衰减
+quiet
+atmosphere_file /home/yk/libRadtran-2.0.6/data/atmmod/afglms.dat
+
+# 关键修改：altitude 顺序反过来！
+altitude 7.0 0.0       # 发射端7km → 接收端0km（向下传输）
+wavelength 3000 5000  # 8-14μm红外窗口
+pressure 404.0          # 6km高度的气压（来自afglms.dat）
+
+rte_solver disort
+mol_abs_param lowtran   # 用你已有的数据方案
+source thermal          # 无人机自身热辐射
+albedo 0.3
+
+output_process per_nm
+output_user lambda edir edn eup
